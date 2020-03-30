@@ -15,7 +15,7 @@ node.name: {{inventory_hostname}}-{{es_instance_name}}
 
 # Path to directory containing configuration (this file and logging.yml):
 
-{% if (es_version | version_compare('6.0.0', '<')) %}
+{% if (es_version is version_compare('6.0.0', '<')) %}
 path.conf: {{ conf_dir }}
 {% endif %}
 
@@ -71,5 +71,5 @@ xpack.notification.email:
         {% if es_mail_config['require_auth'] == true %}
         user: {{ es_mail_config['user'] }}
         password: {{ es_mail_config['pass'] }}
-        {% endif %}  
+        {% endif %}
 {% endif %}
